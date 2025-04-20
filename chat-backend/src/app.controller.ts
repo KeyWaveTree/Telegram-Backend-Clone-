@@ -31,8 +31,8 @@ export class AppController {
   }
 
   /** 사용자 추가 하기(Create)
-   * @param userDto  json 형태로 받은 수신데이터 파라미터를 받는다.
-   * @returns 앱서비스 안에 있는 createUser 메소드를을 html body에다 적용하라
+   * @param {{ name: string; age: number }} userDto  json 형태로 받은 수신데이터 파라미터를 받는다.
+   * @returns {Function} 앱서비스 안에 있는 createUser 메소드를을 html body에다 적용하라
    */
   @Post()
   createUser(@Body() userDto: { name: string; age: number }) {

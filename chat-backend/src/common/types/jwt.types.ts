@@ -1,6 +1,6 @@
-export type JwtPayLoad = {
+export type JwtPayload = {
   id: string;
   nickname: string;
 };
 
-export type AccessTokenPayload = {} & JwtPayLoad;
+export type AccessTokenPayload = {} & JwtPayload;

@@ -67,13 +67,21 @@ export class AppService {
 
   /**사용자 삭제하기 (Delete)
    * @param {string} id 삭제할 유저 id
+   * @returns {object} 동작된 메시지 object
    */
   deleteUser(id: string) {
+    //db iterator의 id 정보와 파라미터로 받은 id 정보가 완전히 같은 경우의 인덱스를 return
     const userIndex = this.users.findIndex((user) => user.id === id);
+
+    //만약 원하는 인덱스를 찾지 못했을때 (userIndex값이 -1과 완전히 똑같은 경우)
     if (userIndex === -1) {
+      //찾지 못했다는 메시지 객체 return
       return { message: 'User not found' };
     }
+    //원하는 인덱스를 찾을 경우 인덱스 위치에 있는 1개의 객체를 없앤다.
     this.users.splice(userIndex, 1);
+
+    //삭제했다는 메시지 객체 return
     return { message: 'User delete' };
   }
 }
