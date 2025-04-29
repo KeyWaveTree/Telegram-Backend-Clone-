@@ -1,4 +1,4 @@
-import { Auth as AuthSchema } from './auth.schema';
+import { AuthSchema } from './auth.schema';
 import { ChatRoomSchema } from './chatroom.schema';
 import { MessageSchema } from './message.schema';
 
@@ -8,3 +8,6 @@ export const Schemas = {
   ChatRoom: { name: 'ChatRoom', schema: ChatRoomSchema },
   Message: { name: 'Message', schema: MessageSchema },
 };
+
+// + 참조 대상이 스키마 객체인  AuthSchema로 해야하는데
+// 스키마 정의 객체인 Auth를 참조함.
