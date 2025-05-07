@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "nestjs": "^0.0.1"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2"
+  }
+}

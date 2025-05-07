@@ -38,7 +38,7 @@ export class ChatController {
     const chatrooms = await this.chatService.getChatRooms(
       new Types.ObjectId(id),
     );
-    return { chatrooms: chatrooms.map((it) => new ChatRoomDto(it)) };
+    return { chatrooms: chatrooms.map((it) => new ChatRoomDto(it, id)) };
   }
 
   @UseGuards(AuthAccessTokenGuard)

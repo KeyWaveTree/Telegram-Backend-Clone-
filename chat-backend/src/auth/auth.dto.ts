@@ -46,14 +46,6 @@ export class AuthSignupRequestDto {
   @IsString()
   @Length(3, 20)
   nickname: string;
-
-  @IsNotEmpty()
-  @IsString()
-  publicKey: string;
-
-  @IsNotEmpty()
-  @IsString()
-  encryptedPrivateKey: string;
 }
 
 export class AuthSignupResponseDto {

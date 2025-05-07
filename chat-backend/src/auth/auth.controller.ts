@@ -20,26 +20,39 @@ import {
 } from './auth.dto';
 
 /**모듈을 만들것이다. -> 프로토콜 api를 만든다.
- * @class AuthController
+ * @class
  */
-@Controller()
+@Controller('auth')
 export class AuthController {
-  //의존성 주입
+  /** 의존성 주입
+   * @param authService
+   */
   constructor(private readonly authService: AuthService) {}
 
-  /**@Post() 로그인 기능
+  /**@Post('login') 로그인 기능(post 요청에 /login을 통해 들어가야 한다.)
+   * @param authLoginDto
+   * nestjs/common의 annotation Body() 사용
+   *
+   * @param res nestjs/common의 annotation Res({passthrough:true})
+   * 의미: 응답 객체를 가지고온다. nest는 두종류의 respones 옵션을 제공하는데 두 옵션중 하나만 사용할 수 있다. Res를 호출하면 standard 옵션 자동으로 비활성화 된다.
+   * Standard : 핸들러가 객체 또는 배열인 경우 자동으로 json 직렬화(원시타입 제외)
+   * 상태코드는 항상 기본 200, POST의 경우 201이다. 상태코드 사용 HttpCode 데코레이터 이용
+   * Library-specific: 특정 라이브러리의 response 객체를 의미함 이러한 객체는 Res() 데코레이터를 사용 호출
    */
   @Post('login')
   async authLogin(
     @Body() authLoginDto: AuthLoginRequestDto,
     @Res({ passthrough: true }) res: Response,
   ): Promise<AuthLoginResponseDto> {
+    //Login에 필요한 유저 이름과 비밀번호를 가지고와라
     const { username, password } = authLoginDto;
 
+    //async의 promiss상태가 바뀐다면 await인
     const authEntity = await this.authService.getAccount(username, password);
     if (!authEntity) {
       throw new UnauthorizedException('아이디 또는 비밀번호가 잘못되었습니다.');
     }
+
     const { nickname, publicKey, encryptedPrivateKey } = authEntity;
 
     const accessToken = await this.authService.createAccessToken({
