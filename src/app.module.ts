@@ -19,13 +19,13 @@ import { JwtModule } from '@nestjs/jwt';
 @Module({
   imports: [
     ConfigModule, //configModule을 가져와서 ConfigService를 사용가능하게 함.
-    AuthModule,
-    UsersModule,
-    ChatModule,
-    DatabaseModule,
+    AuthModule, //authmodule을 가져와서 AuthService를 사용가능하게 함.
+    UsersModule, //usersModule을 가져와서 UsersService를 사용가능하게 함.
+    ChatModule, //chatModule을 가져와서 ChatService를 사용가능하게 함.
+    DatabaseModule, //databaseModule을 가져와서 DatabaseModule을 사용가능하게 함.
     JwtModule.register({ global: true }),
   ],
-  controllers: [AppController],
+  controllers: [AppController], //현재 사용할 controllers는 AppContoller이다.
   providers: [AppService, ChatGateway, ConfigService],
 })
 export class AppModule {}

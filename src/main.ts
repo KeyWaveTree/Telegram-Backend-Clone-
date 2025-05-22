@@ -6,6 +6,11 @@ import cookieParser from 'cookie-parser';
 //async가 표시된 method는 무조건 Promiss를 return이 된다.
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  app.enableCors({
+    credentials: true,
+    origin: true,
+  });
   //---- 벨리데이션 파이프라는 데이터 검증
   app.useGlobalPipes(
     new ValidationPipe({
@@ -18,4 +23,5 @@ async function bootstrap() {
   //----
   await app.listen(process.env.PORT ?? 3000);
 }
+
 bootstrap();
