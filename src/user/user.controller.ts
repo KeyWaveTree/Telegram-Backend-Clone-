@@ -1,8 +1,8 @@
 import { Controller, Get, Query, UseGuards } from '@nestjs/common';
-import { UserService } from './users.service';
+import { UserService } from './user.service';
 import { AuthAccessTokenGuard } from '../auth/auth.guard';
 import { UserInfoDto } from 'src/common/dto/userinfo.dto';
-import { UserSearchQueryRequestDto, UserSearchResponseDto } from './users.dto';
+import { UserSearchQueryRequestDto, UserSearchResponseDto } from './user.dto';
 
 @Controller('user')
 export class UserController {

@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
-import { UsersModule } from './users/users.module';
+import { UserModule } from './user/user.module';
 import { ChatModule } from './chat/chat.module';
 import { ChatGateway } from './#/chat/chat.gateway';
 import { DatabaseModule } from './database/database.module';
@@ -20,7 +20,7 @@ import { JwtModule } from '@nestjs/jwt';
   imports: [
     ConfigModule, //configModule을 가져와서 ConfigService를 사용가능하게 함.
     AuthModule, //authmodule을 가져와서 AuthService를 사용가능하게 함.
-    UsersModule, //usersModule을 가져와서 UsersService를 사용가능하게 함.
+    UserModule, //userModule을 가져와서 UsersService를 사용가능하게 함.
     ChatModule, //chatModule을 가져와서 ChatService를 사용가능하게 함.
     DatabaseModule, //databaseModule을 가져와서 DatabaseModule을 사용가능하게 함.
     JwtModule.register({ global: true }),
