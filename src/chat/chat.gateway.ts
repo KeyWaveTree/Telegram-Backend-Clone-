@@ -18,7 +18,7 @@ import { MessageDto } from 'src/common/dto/message.dto';
 //우리가 만든 Gard를 쓸수 없음.
 @WebSocketGateway({
   cors: {
-    origin: '*', //프론트엔드 주소
+    origin: 'http://localhost:5173', //프론트엔드 주소
     credentials: true, //쿠키를 허용하려면 반드시 true
   },
 })
